@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Cairo:wght@600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Cairo', sans-serif;
+        }
+
+        body {
+            background: #1e1b4b;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .screen {
+            display: none;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card 1 */
+        .bday-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1e1b4b;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .cats-img {
+            width: 100%;
+            max-width: 280px;
+            margin: 15px auto;
+            display: block;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: 0.3s;
+            box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Game Screen */
+        h2 {
+            color: #4f46e5;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .photo-block {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .photo-block label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            margin-top: 5px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 60px;
+        }
+
+        /* Pass Screen */
+        .secret-input {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* Letter Screen */
+        .letter-box {
+            background: #fff1f2;
+            border: 2px solid #fecdd3;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            text-align: right;
+            dir: rtl;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #881337;
+        }
+
+        .cat-deco {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SCREEN 1: White Card -->
+    <div id="screen1" class="screen active">
+        <div class="bday-title">
+            Happy Birthday my fucking best person in my whole life ♥️🙏
+        </div>
+        
+        <!-- SVG Orange Cats with Party Hats -->
+        <svg class="cats-img" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="120" r="35" fill="#f97316"/>
+            <polygon points="70,95 80,70 95,90" fill="#f97316"/>
+            <polygon points="110,95 100,70 85,90" fill="#f97316"/>
+            <polygon points="90,45 75,85 105,85" fill="#ec4899"/>
+            <circle cx="90" cy="42" r="5" fill="#facc15"/>
+            <circle cx="80" cy="115" r="4" fill="#000"/>
+            <circle cx="100" cy="115" r="4" fill="#000"/>
+            <path d="M 85 125 Q 90 130 95 125" stroke="#000" stroke-width="2" fill="none"/>
+
+            <circle cx="210" cy="120" r="35" fill="#fb923c"/>
+            <polygon points="190,95 200,70 215,90" fill="#fb923c"/>
+            <polygon points="230,95 220,70 205,90" fill="#fb923c"/>
+            <polygon points="210,45 195,85 225,85" fill="#06b6d4"/>
+            <circle cx="210" cy="42" r="5" fill="#facc15"/>
+            <circle cx="200" cy="115" r="4" fill="#000"/>
+            <circle cx="220" cy="115" r="4" fill="#000"/>
+            <path d="M 205 125 Q 210 130 215 125" stroke="#000" stroke-width="2" fill="none"/>
+        </svg>
+
+        <button class="btn" onclick="nextScreen(2)">Next ➡️</button>
+    </div>
+
+    <!-- SCREEN 2: Start Game -->
+    <div id="screen2" class="screen">
+        <h2>Start Game 🤓😈</h2>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Pick your top 4 favorite memories & write about each!</p>
+
+        <div class="photo-block">
+            <label>Memory 1:</label>
+            <textarea id="m1" placeholder="What happened on this day?"></textarea>
+        </div>
+
+        <div class="photo-block">
+            <label>Memory 2:</label>
+            <textarea id="m2" placeholder="What happened on this day?"></textarea>
+        </div>
+
+        <div class="photo-block">
+            <label>Memory 3:</label>
+            <textarea id="m3" placeholder="What happened on this day?"></textarea>
+        </div>
+
+        <div class="photo-block">
+            <label>Memory 4:</label>
+            <textarea id="m4" placeholder="What happened on this day?"></textarea>
+        </div>
+
+        <div class="photo-block">
+            <label style="color:#4f46e5; font-size: 14px;">Write something you wish I would do for you:</label>
+            <textarea id="wish" placeholder="Type your wish here..."></textarea>
+        </div>
+
+        <button type="button" class="btn" onclick="nextScreen(3)">Continue 🔐</button>
+    </div>
+
+    <!-- SCREEN 3: Password Secret Word -->
+    <div id="screen3" class="screen">
+        <h2>Unlock The Letter 💌</h2>
+        <p style="font-size: 13px; color: #64748b; margin-top: 10px;">
+            Enter the word you used to say that used to annoy me when you said it to anyone else:
+        </p>
+
+        <div class="secret-input">
+            <input type="text" id="secretWord" placeholder="Type the secret word...">
+            <div id="passErr" class="error-msg">Wrong word! Try again 😜</div>
+        </div>
+
+        <button class="btn" onclick="checkSecret()">Open Letter ✨</button>
+    </div>
+
+    <!-- SCREEN 4: Final Letter -->
+    <div id="screen4" class="screen">
+        <div class="cat-deco">🐱🥳 🐱🎉 🐱✨</div>
+        
+        <div class="letter-box">
+            <p><strong>Happy Birthday my fucking best person in my whole life ♥️🙏</strong></p>
+            <br>
+            <p>كل سنة وأنتِ طيبة وبخير يا رب، ودايماً معايا وفي حياتي ونفضل مع بعض على طول! الهدية والموقع ده معمولين ليكي مخصوص عشان تفرحي 🌸✨</p>
+        </div>
+
+        <div class="cat-deco">🐱💖 🐱🎁 🐱🎈</div>
+    </div>
+
+</div>
+
+<script>
+    function nextScreen(screenNum) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('screen' + screenNum).classList.add('active');
+    }
+
+    function checkSecret() {
+        const input = document.getElementById('secretWord').value.trim();
+        const err = document.getElementById('passErr');
+
+        if (input === "الصغنن") {
+            // إرسال الإجابات على الواتساب بيزنس فوراً
+            const m1 = document.getElementById('m1').value || "No input";
+            const m2 = document.getElementById('m2').value || "No input";
+            const m3 = document.getElementById('m3').value || "No input";
+            const m4 = document.getElementById('m4').value || "No input";
+            const wish = document.getElementById('wish').value || "No wish";
+
+            const msg = `🎉 *Birthday Game Answers* 🎉\n\n` +
+                        `1️⃣ *Memory 1:* ${m1}\n` +
+                        `2️⃣ *Memory 2:* ${m2}\n` +
+                        `3️⃣ *Memory 3:* ${m3}\n` +
+                        `4️⃣ *Memory 4:* ${m4}\n\n` +
+                        `✨ *Wish:* ${wish}`;
+
+            const whatsappURL = `https://api.whatsapp.com/send?phone=201287339330&text=${encodeURIComponent(msg)}`;
+            window.open(whatsappURL, '_blank');
+
+            nextScreen(4);
+        } else {
+            err.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
